@@ -1,10 +1,45 @@
-const SimpleInput = (props) => {
+import React from "react";
+import { useState } from "react";
+const SimpleInput = () => {
+  const [enteredName, setEnteredName] = useState("");
+  const [inputIsTouched, setInputIsTouched] = useState(false);
+  const enteredInputIsValid = enteredName.trim() !== "";
+  const inputInValid = !enteredInputIsValid && inputIsTouched;
+
+  const blurHandler = () => {
+    setInputIsTouched(true);
+  };
+
+  const onSubmitHandler = (event) => {
+    event.preventDefault();
+    setInputIsTouched(true);
+    if (inputInValid) {
+      return;
+    }
+    console.log(enteredName);
+    setEnteredName("");
+    setInputIsTouched(false);
+  };
+
+  const EnteredNameHandler = (event) => {
+    const eventValue = event.target.value;
+    setEnteredName(eventValue);
+  };
+
+  const inputclasses = inputInValid ? "form-control invalid" : "form-control ";
   return (
-    <form>
-      <div className="form-control">
+    <form onSubmit={onSubmitHandler}>
+      <div className={inputclasses}>
         <label htmlFor="name">Your Name</label>
-        <input type="text" id="name" />
+        <input
+          type="text"
+          id="name"
+          value={enteredName}
+          onChange={EnteredNameHandler}
+          onBlur={blurHandler}
+        />
       </div>
+      {inputInValid && <p className="error-text">input is not valid</p>}
       <div className="form-actions">
         <button>Submit</button>
       </div>
