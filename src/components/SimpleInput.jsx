@@ -1,10 +1,16 @@
 import React from "react";
 import { useState } from "react";
+
 const SimpleInput = () => {
   const [enteredName, setEnteredName] = useState("");
   const [inputIsTouched, setInputIsTouched] = useState(false);
   const enteredInputIsValid = enteredName.trim() !== "";
   const inputInValid = !enteredInputIsValid && inputIsTouched;
+  let formIsValid = false;
+
+  if (enteredInputIsValid) {
+    formIsValid = true;
+  }
 
   const blurHandler = () => {
     setInputIsTouched(true);
@@ -41,7 +47,7 @@ const SimpleInput = () => {
       </div>
       {inputInValid && <p className="error-text">input is not valid</p>}
       <div className="form-actions">
-        <button>Submit</button>
+        <button disabled={!formIsValid}>Submit</button>
       </div>
     </form>
   );
