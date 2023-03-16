@@ -12,7 +12,7 @@ const SimpleInput = () => {
     formIsValid = true;
   }
 
-  const blurHandler = () => {
+  const blurHandlers = () => {
     setInputIsTouched(true);
   };
 
@@ -42,7 +42,7 @@ const SimpleInput = () => {
           id="name"
           value={enteredName}
           onChange={EnteredNameHandler}
-          onBlur={blurHandler}
+          onBlur={blurHandlers}
         />
       </div>
       {inputInValid && <p className="error-text">input is not valid</p>}
