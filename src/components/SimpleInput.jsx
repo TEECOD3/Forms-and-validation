@@ -27,7 +27,7 @@ const SimpleInput = () => {
     setInputIsTouched(false);
   };
 
-  const EnteredNameHandler = (event) => {
+  const EnteredNameHandlers = (event) => {
     const eventValue = event.target.value;
     setEnteredName(eventValue);
   };
@@ -41,7 +41,7 @@ const SimpleInput = () => {
           type="text"
           id="name"
           value={enteredName}
-          onChange={EnteredNameHandler}
+          onChange={EnteredNameHandlers}
           onBlur={blurHandler}
         />
       </div>
