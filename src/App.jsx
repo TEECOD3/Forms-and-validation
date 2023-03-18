@@ -1,11 +1,11 @@
 import SimpleInput from "./components/SimpleInput";
+import BasicForm from "./components/BasicForm";
 
 function App() {
-  const a = "yam";
-
   return (
     <div className="app">
-      <SimpleInput />
+      <BasicForm />
+      {/* <SimpleInput /> */}
     </div>
   );
 }

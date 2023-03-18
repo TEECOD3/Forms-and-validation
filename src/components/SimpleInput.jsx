@@ -6,6 +6,7 @@ const SimpleInput = () => {
   const [inputIsTouched, setInputIsTouched] = useState(false);
   const enteredInputIsValid = enteredName.trim() !== "";
   const inputInValid = !enteredInputIsValid && inputIsTouched;
+
   let formIsValid = false;
 
   if (enteredInputIsValid) {
@@ -22,7 +23,7 @@ const SimpleInput = () => {
     if (inputInValid) {
       return;
     }
-    console.log(enteredName);
+
     setEnteredName("");
     setInputIsTouched(false);
   };
@@ -47,7 +48,7 @@ const SimpleInput = () => {
       </div>
       {inputInValid && <p className="error-text">input is not valid</p>}
       <div className="form-actions">
-        <button disabled={!formIsValid}>Submit</button>
+        <button>Submit</button>
       </div>
     </form>
   );
